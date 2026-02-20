@@ -21,7 +21,7 @@ export default function Home() {
             </div>
             <div>
               <CardTitle className="text-5xl font-bold mb-4">
-                WhatsApp Clone
+                Chat App
               </CardTitle>
               <CardDescription className="text-xl text-green-50">
                 Connect with friends and family through instant messaging

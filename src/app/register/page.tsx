@@ -21,8 +21,17 @@ export default function RegisterPage() {
     const { data, error } = await api.register(name, email, password);
 
     if (data) {
-      alert("Registered successfully");
-      router.push("/login");
+      // Automatically log the user in
+      const loginRes = await api.login(email, password);
+
+      if (loginRes.data && loginRes.data.access_token) {
+        localStorage.setItem("access_token", loginRes.data.access_token);
+        router.push("/home");
+      } else {
+        // Fallback to login page if immediate login fails
+        alert("Registered successfully. Please log in.");
+        router.push("/login");
+      }
     } else {
       alert(error);
     }

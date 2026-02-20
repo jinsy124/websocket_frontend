@@ -15,25 +15,25 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const { data, error } = await api.login(email, password);
+    const { data, error } = await api.login(email, password);
 
-  if (data) {
-    localStorage.setItem("access_token", data.access_token);
-    localStorage.setItem("refresh_token", data.refresh_token);
+    if (data) {
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
 
-    // 👉 Get token from storage
-    const token = localStorage.getItem("access_token");
+      // 👉 Get token from storage
+      const token = localStorage.getItem("access_token");
 
-    console.log("Access Token:", token);
+      console.log("Access Token:", token);
 
-    router.push("/home");
-  } else {
-    alert(error || "login failed");
-  }
-};
+      router.push("/home");
+    } else {
+      alert(error || "login failed");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-900 dark:to-gray-800 p-4">
@@ -94,7 +94,7 @@ export default function LoginPage() {
             </Button>
 
             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link href="/register" className="text-green-600 hover:text-green-700 font-semibold hover:underline">
                 Sign up
               </Link>
